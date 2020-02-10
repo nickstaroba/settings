@@ -23,11 +23,22 @@ ll() {
 # variables
 CONFIRM_REGEX='^([yY][eE][sS]|[yY])+$'
 
-# examples
-example() {
-  read -r -p "Example? [y/N] " response
-  if [[ "$response" =~ $CONFIRM_REGEX ]]
-  then
-    echo "YES"
-  fi
+# example() {
+#   read -r -p "Example? [y/N] " response
+#   if [[ "$response" =~ $CONFIRM_REGEX ]]
+#   then
+#     echo "YES"
+#   fi
+# }
+
+git-make-push-all() {
+  read -r -p "Primary Repository URL: " primaryRepoUrl
+  read -r -p "Secondary Repository URL: " secondaryRepoUrl
+
+  git remote remove origin
+  git remote add origin $primaryRepoUrl
+  git remote set-url --add --push origin $secondaryRepoUrl
+  git remote set-url --add --push origin $primaryRepoUrl
+
+  echo "Git remotes modified."
 }
