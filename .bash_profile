@@ -6,6 +6,9 @@
 # prompt
 export PS1="\n| \u:\h \w \n| $ "
 
+# no zsh please
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # autocompletion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
